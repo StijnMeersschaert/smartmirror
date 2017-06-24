@@ -48,9 +48,8 @@ $(document).ready(function () {
             $.ajax({
                 url: "https://maps.googleapis.com/maps/api/geocode/json?latlng="+latitude+","+longitude+"&key="+ "AIzaSyAl-WMKlOdoBuqboALuqb8diF-XyNO1YFQ",
                 jsonp: "callback",
-                dataType: "jsonp",
+                dataType: "json",
                 success: function (json) {
-                    console.log("succes");
                     let address = json.results[0].formatted_address;
                     $(".location").html(address);
                 }
