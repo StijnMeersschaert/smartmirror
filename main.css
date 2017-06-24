@@ -1,0 +1,10 @@
+body {
+    background: black;
+}
+
+p, i {
+    font-family: sans-serif;
+    font-size: 5rem;
+    font-weight: bold;
+    color:white;
+}
