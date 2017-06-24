@@ -5,17 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>'Smart' Mirror</title>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="icons.css">
     <link rel="stylesheet" type="text/css" href="main.css">
 
 </head>
 <body>
-    <div class="container">
-        <div class="col-2" id="weather">
-            <p class="temp"></p>
-            <div class="icon"></div>
-            <p class="short"></p>
-            <p class="location"></p>
+    <div class="container flex">
+        <div class="col-2 flex-child stretch flex column" id="weather">
+            <div class="prime-data">
+                <span class="temp"></span>
+                <span class="icon"></span>
+            </div>
+            <div>
+                <span class="short"></span>
+                <span class="location"></span>
+            </div>
         </div>
         <div class="col-2" id="clock">
             <p class="time"></p>
