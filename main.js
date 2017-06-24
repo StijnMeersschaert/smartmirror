@@ -1,6 +1,11 @@
 $(document).ready(function () {
     const apiUrl = "https://api.darksky.net/forecast/94752888a8c1ea257f570a41fde48c63/";
 
+    // Set and update clock
+    clockUpdate();
+    setInterval(clockUpdate, 1000);
+    setDate();
+
     // Check if navigator is available
     if (!navigator.geolocation) {
         window.alert("Geolocation is not supported by your browser");
@@ -46,7 +51,7 @@ $(document).ready(function () {
             });
 
             $.ajax({
-                url: "https://maps.googleapis.com/maps/api/geocode/json?latlng="+latitude+","+longitude+"&key="+ "AIzaSyAl-WMKlOdoBuqboALuqb8diF-XyNO1YFQ",
+                url: "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latitude + "," + longitude + "&key=" + "AIzaSyAl-WMKlOdoBuqboALuqb8diF-XyNO1YFQ",
                 jsonp: "callback",
                 dataType: "json",
                 success: function (json) {
@@ -54,5 +59,34 @@ $(document).ready(function () {
                     $(".location").html(address);
                 }
             });
-        });
+        }
+    );
+
+    function clockUpdate() {
+        var date = new Date();
+        $('.digital-clock').css({ 'color': '#fff', 'text-shadow': '0 0 6px #ff0' });
+        function addZero(x) {
+            if (x < 10) {
+                return x = '0' + x;
+            } else {
+                return x;
+            }
+        }
+
+        var h = addZero(date.getHours());
+        var m = addZero(date.getMinutes());
+        var s = addZero(date.getSeconds());
+
+        $('.time').html(h + ':' + m + ':' + s)
+    }
+
+    function setDate() {
+        var date = new Date();
+        var days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+        var months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
+        var day = days[date.getDay()];
+        var month = months[date.getMonth()];
+        $('.day').html(day);
+        $('.date').html(month + " " + date.getDate() + ", " + date.getFullYear());
+    }
 });
